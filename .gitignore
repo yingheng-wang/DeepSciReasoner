@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.DS_Store
+
+# Benchmark data: download with scripts/download_data.sh
+DATA/*
+!DATA/README.md
+
+# Training outputs
+TRAINED/
+summary/
+slurm_output/*
+!slurm_output/.gitkeep
+*.log

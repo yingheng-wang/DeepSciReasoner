@@ -1,0 +1,45 @@
+# DeepSciReasoner runtime environment: Linux x86_64 with an NVIDIA GPU.
+# GPU: compute capability sm_50-sm_90 (e.g. A100 = sm_80, H100 = sm_90; Blackwell is
+# not supported by this PyTorch build). Driver must report CUDA >= 12.0 (>= 525.60.13).
+# Create:   CONDA_CHANNEL_PRIORITY=flexible conda env create -f environment.yml
+# Activate: conda activate dsr
+# Verify:   python -m pip check && python scripts/check_env.py
+# This is a focused environment specification, not a complete historical lockfile.
+name: dsr
+# The pytorch-channel build needs llvm-openmp<16 and MKL/intel-openmp 2023.x,
+# which only defaults provides; conda-forge's mkl 2023.1.0 needs llvm-openmp>=16,
+# so conda-forge must not outrank defaults (it is used only for sympy below).
+# nodefaults stops conda from also adding the channels in the machine's .condarc.
+channels:
+  - pytorch
+  - nvidia
+  - defaults
+  - nodefaults
+dependencies:
+  - python=3.12.7
+  - pip=24.2
+  # Require the CUDA build, rather than relying on solver build selection.
+  - pytorch=2.5.1=*cuda12.4*
+  - pytorch-cuda=12.4
+  # Keep the original PyTorch binary runtime and its required SymPy version.
+  - mkl=2023.1.0
+  # defaults has no sympy 1.13.1; conda-forge's build is pure Python (mpmath<1.4).
+  - conda-forge::sympy=1.13.1
+  # Original runtime imports 2.2.5; discard the stale pip NumPy 1.26.4 record.
+  # Pin the defaults build linked against MKL 2023.1. The conda-forge::sympy line
+  # puts conda-forge in the solve, and conda-forge's numpy can only get its slow
+  # reference (netlib) BLAS next to mkl=2023.1.0, so don't leave the choice to the solver.
+  - numpy=2.2.5=py312h2470af2_0
+  # setuptools>=82 removed pkg_resources, which the tensorboard 2.18 CLI imports.
+  - setuptools<82
+  - pip:
+      # Prebuilt torch-scatter for PyTorch 2.5.x / CUDA 12.4 / Python 3.12.
+      - --find-links https://data.pyg.org/whl/torch-2.5.1+cu124.html
+      - torch-geometric==2.6.1
+      - torch-scatter==2.1.2+pt25cu124
+      - pandas==2.2.3
+      - scipy==1.14.1
+      - scikit-learn==1.6.0
+      - pymatgen==2024.11.13
+      - tqdm==4.67.1
+      - tensorboard==2.18.0

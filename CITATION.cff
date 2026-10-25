@@ -1,0 +1,42 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper below."
+title: "DeepSciReasoner"
+type: software
+license: MIT
+repository-code: "https://github.com/yingheng-wang/DeepSciReasoner"
+authors:
+  - family-names: Wang
+    given-names: Yingheng
+  - family-names: Yu
+    given-names: Tao
+  - family-names: Kong
+    given-names: Shufeng
+  - family-names: Ricci
+    given-names: Francesco
+  - family-names: Gregoire
+    given-names: John M.
+  - family-names: Gomes
+    given-names: Carla P.
+preferred-citation:
+  type: conference-paper
+  title: "Deep Scientific Reasoning under Physical Constraints: Structure-Aware Spectrum Prediction"
+  authors:
+    - family-names: Wang
+      given-names: Yingheng
+    - family-names: Yu
+      given-names: Tao
+    - family-names: Kong
+      given-names: Shufeng
+    - family-names: Ricci
+      given-names: Francesco
+    - family-names: Gregoire
+      given-names: John M.
+    - family-names: Gomes
+      given-names: Carla P.
+  collection-title: "Proceedings of the 43rd International Conference on Machine Learning"
+  conference:
+    name: "International Conference on Machine Learning (ICML)"
+  publisher:
+    name: "PMLR"
+  volume: 306
+  year: 2026
