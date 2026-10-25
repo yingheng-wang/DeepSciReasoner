@@ -105,7 +105,7 @@ bash scripts/test.sh edos_caltech 1 4
 
 Stage II for seed `N` loads the Stage I run from the same seed. `test.py` averages the refined spectra of the two Stage I/II pairs with equal weights. It then reports R², MAE, MSE and Wasserstein distance on the test split. The code runs on the first visible GPU; select one with `CUDA_VISIBLE_DEVICES`.
 
-**Slurm.** The same scripts can be submitted with `sbatch` from the repository root; logs go to `slurm_output/`. The `#SBATCH` headers request 1 GPU, 16 CPUs, 32 GB of memory and 24 h. Add site-specific options on the command line, e.g. `sbatch -p <partition> --qos=<qos> ...`. Dependencies chain the stages:
+**Slurm.** The same scripts can be submitted with `sbatch` from the repository root; logs go to `<job name>-<job id>.out` and `.err` there (e.g. `dsr_stage1-123456.out`). The `#SBATCH` headers request 1 GPU, 16 CPUs, 32 GB of memory and 24 h. Add site-specific options on the command line, e.g. `sbatch -p <partition> --qos=<qos> ...`. Dependencies chain the stages:
 
 ```bash
 s1=$(sbatch --parsable scripts/train_stage1.sh edos_caltech 1)

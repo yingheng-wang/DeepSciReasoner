@@ -11,8 +11,8 @@
 #
 # Adapt the Slurm resources to your cluster (add -p/--qos/GPU type as needed).
 #SBATCH -J dsr_test
-#SBATCH -o slurm_output/%x-%j.out
-#SBATCH -e slurm_output/%x-%j.err
+#SBATCH -o %x-%j.out
+#SBATCH -e %x-%j.err
 #SBATCH -N 1 -n 1 -c 16
 #SBATCH --mem=32G
 #SBATCH -t 4:00:00

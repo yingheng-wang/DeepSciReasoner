@@ -12,6 +12,8 @@ DATA/*
 # Training outputs
 TRAINED/
 summary/
-slurm_output/*
-!slurm_output/.gitkeep
 *.log
+
+# Slurm logs (written to the repository root)
+dsr_*-*.out
+dsr_*-*.err
