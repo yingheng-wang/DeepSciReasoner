@@ -4,7 +4,7 @@ Official implementation of **Deep Scientific Reasoning under Physical Constraint
 
 Yingheng Wang, Tao Yu, Shufeng Kong, Francesco Ricci, John M. Gregoire, Carla P. Gomes
 
-[[Dataset]](https://huggingface.co/datasets/yingheng/DeepSciReasoner)
+[[Paper]](https://arxiv.org/abs/2610.34021) [[Project page]](https://yingheng-wang.com/DeepSciReasoner/) [[Dataset]](https://huggingface.co/datasets/yingheng/DeepSciReasoner)
 
 DeepSciReasoner predicts structured scientific spectra from crystal structures while respecting hard physical constraints. It works in two stages:
 
